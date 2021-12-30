@@ -15,7 +15,7 @@ namespace ServerInWpf.Network
     public class NetworkServer
     {
         private static Socket serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        private const int BUFFER_SIZE = 1024;
+        private const int BUFFER_SIZE = 1000000;
         private static byte[] buffer = new byte[BUFFER_SIZE];
         private static List<Socket> clientSockets = new List<Socket>();
         public ObservableCollection<User> Users { get; set; }
@@ -73,13 +73,19 @@ namespace ServerInWpf.Network
             var userModel = JsonConvert.DeserializeObject<UserModel>(jsonString);
 
             var imagePath = ImageConvert.GetImagePath(userModel.ImageBytes);
+            imagePath = imagePath.Substring(5);
             var user = new User
             {
                 Fullname = userModel.Fullname,
                 Age = userModel.Age,
                 ImagePath = imagePath
             };
-            Users.Add(user);
+
+            App.Current.Dispatcher.Invoke(() =>
+            {
+
+                Users.Add(user);
+            });
 
 
             //File.WriteAllText("user.txt", user.Name + "  " + user.Surname + "  " + user.Age + "   " + user.Message);

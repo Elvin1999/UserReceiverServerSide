@@ -9,6 +9,7 @@
     <StackPanel>
         <ProgressBar  Foreground="Red"  Height="30" IsIndeterminate="True"   ></ProgressBar>
         <Button Command="{Binding StartServerCommand}" FontSize="20">Start Server</Button>
+        <Button Command="{Binding GetUsersCommand}" FontSize="20">Get Users</Button>
         <ListBox Height="350" HorizontalAlignment="Center" Width="400" Background="SpringGreen" ItemsSource="{Binding AllUsers}" >
 
             <ListBox.ItemTemplate>
