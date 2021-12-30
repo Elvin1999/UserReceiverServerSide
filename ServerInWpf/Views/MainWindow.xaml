@@ -1,0 +1,32 @@
+﻿<Window x:Class="ServerInWpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ServerInWpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <ProgressBar  Foreground="Red"  Height="30" IsIndeterminate="True"   ></ProgressBar>
+        <Button Command="{Binding StartServerCommand}" FontSize="20">Start Server</Button>
+        <ListBox Height="350" HorizontalAlignment="Center" Width="400" Background="SpringGreen" ItemsSource="{Binding AllUsers}" >
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>                                
+                        <Ellipse Width="180" Height="180">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding ImagePath}" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock FontSize="22" Text="{Binding Fullname}" ></TextBlock>
+                        <TextBlock FontSize="22" Text="{Binding Age}" ></TextBlock>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+
+        </ListBox>
+    </StackPanel>
+</Window>
