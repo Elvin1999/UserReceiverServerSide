@@ -18,9 +18,11 @@ namespace ServerInWpf.Helpers
             Image img = (Image)ic.ConvertFrom(buffer);
             Bitmap bitmap1 = new Bitmap(img);
             var unique = Guid.NewGuid();
-            string imagePath = "";
-            bitmap1.Save($@"../../Images/image{unique}.jpg");
-            imagePath = $@"../../Images/image{unique}.jpg";
+
+            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "ServerImages");
+            Directory.CreateDirectory(path);
+            var imagePath = $@"{path}\image{Guid.NewGuid()}.jpg";
+            bitmap1.Save(imagePath);
             return imagePath;
         }
         public static byte[] GetBytesOfImage(string path)

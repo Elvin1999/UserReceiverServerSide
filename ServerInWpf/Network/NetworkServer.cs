@@ -26,7 +26,7 @@ namespace ServerInWpf.Network
             {
                 IsNetworkStarted = true;
                 Users = new ObservableCollection<User>();
-                serverSocket.Bind(new IPEndPoint(IPAddress.Parse("10.1.18.4"), 27001));
+                serverSocket.Bind(new IPEndPoint(IPAddress.Parse("10.1.18.39"), 27001));
                 serverSocket.Listen(0);
                 serverSocket.BeginAccept(AcceptCallBack, null);
             }
@@ -73,7 +73,6 @@ namespace ServerInWpf.Network
             var userModel = JsonConvert.DeserializeObject<UserModel>(jsonString);
 
             var imagePath = ImageConvert.GetImagePath(userModel.ImageBytes);
-            imagePath = imagePath.Substring(5);
             var user = new User
             {
                 Fullname = userModel.Fullname,

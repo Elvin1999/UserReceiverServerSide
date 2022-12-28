@@ -14,12 +14,10 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>                                
-                        <Ellipse Width="180" Height="180">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="{Binding ImagePath}" />
-                            </Ellipse.Fill>
-                        </Ellipse>
+                    <StackPanel>
+
+                        <Image Width="200" Height="200" Stretch="Fill" Source="{Binding ImagePath}" />
+                           
                         <TextBlock FontSize="22" Text="{Binding Fullname}" ></TextBlock>
                         <TextBlock FontSize="22" Text="{Binding Age}" ></TextBlock>
                     </StackPanel>
